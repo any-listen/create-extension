@@ -21,11 +21,9 @@
 推荐使用 `npx` 或 `pnpm dlx` 直接运行：
 
 ```bash
-npx @any-listen/create-extension
-```
-
-```bash
-pnpm dlx @any-listen/create-extension
+npm create @any-listen/extension@latest
+# or
+pnpm create @any-listen/extension@latest
 ```
 
 ## 交互流程

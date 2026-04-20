@@ -21,13 +21,9 @@ Create Any Listen third-party extension project templates. Provides a universal 
 Recommended with `npx` or `pnpm dlx`:
 
 ```bash
-npm create @any-listen/extension
-or
-npx @any-listen/create-extension
-```
-
-```bash
-pnpm dlx @any-listen/create-extension
+npm create @any-listen/extension@latest
+# or
+pnpm create @any-listen/extension@latest
 ```
 
 ## Interactive Flow
