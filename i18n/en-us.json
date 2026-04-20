@@ -1,0 +1,22 @@
+{
+  "creating_project": "Project is being created...",
+  "dependencies_installed": "Dependency installation completed",
+  "directory_exists": "The same project name already exists in the current directory: {dir}",
+  "download_template_failed": "Failed to download template: {message}",
+  "downloading_template": "Template downloading...",
+  "goodbye_message": "Project initialization completed! \nGoodbye~",
+  "installing_dependencies": "Dependencies are being installed...",
+  "project_created": "Project creation completed",
+  "template_common": "Universal template",
+  "template_common_hint": "General project template, just choose this template if you have no special needs",
+  "template_downloaded": "Template download completed",
+  "template_github_name": "GitHub username and project name (leave blank if not using GitHub)",
+  "template_github_name_invalid": "Invalid format. Use username/repo",
+  "template_isolate": "Isolation environment template",
+  "template_isolate_hint": "Suitable for extension projects that wish to create sub-isolated runtime environments",
+  "template_package_manager": "Which package management tool do you plan to use?",
+  "template_project_name": "Project name",
+  "template_project_name_required": "Project name cannot be empty",
+  "template_type_message": "Select the extension project template to initialize",
+  "welcome_message": "Welcome to the Any Listen extension template creation tool!"
+}

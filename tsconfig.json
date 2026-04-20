@@ -1,0 +1,21 @@
+{
+  // https://github.com/tsconfig/bases#recommended-tsconfigjson
+  "extends": "@tsconfig/node24/tsconfig.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.tsbuildinfo",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": false,
+    "module": "ESNext",
+    "rootDir": "./",
+    "noEmit": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "moduleResolution": "bundler",
+    "types": ["@types/node"]
+  },
+  "include": ["**/*.d.ts", "**/*.ts", "**/*.js", "package.json"],
+  "exclude": ["node_modules", "server", "src/preload/**/*"]
+}

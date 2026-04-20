@@ -1,0 +1,74 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - v*.*.* # Trigger on tags like v1.0.0, v2.3.4, etc.
+
+permissions:
+  contents: write
+  id-token: write # Required for OIDC
+
+env:
+  IS_CI: true
+
+jobs:
+  CheckTag:
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.check_tag.outputs.tag }}
+    steps:
+      - name: Check package version
+        uses: actions/checkout@v6
+
+      - name: Check if tag version equals package.json version
+        id: check_tag
+        run: |
+          # check package.json version equals the tag version, if yes, skip release, if no, set output tag to the tag version
+          VERSION=${GITHUB_REF_NAME#v} # Extract version from tag name, removing the 'v' prefix
+          echo "Extracted version: $VERSION"
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          echo "Package version: $PACKAGE_VERSION"
+          if [ "$VERSION" = "$PACKAGE_VERSION" ]; then
+            echo "Tag version matches package.json version. Skipping release."
+            echo "tag=" >> $GITHUB_OUTPUT
+          else
+            echo "Tag version does not match package.json version. Setting output tag."
+            echo "tag=$VERSION" >> $GITHUB_OUTPUT
+          fi
+
+  Release:
+    needs: CheckTag
+    name: Release
+    runs-on: ubuntu-latest
+    if: needs.CheckTag.outputs.tag != ''
+    steps:
+      - name: Check out git repository
+        uses: actions/checkout@v6
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Sync version to package.json
+        run: |
+          npm version ${{ needs.CheckTag.outputs.tag }} --no-git-tag-version
+
+      - name: Commit version change
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "chore: update package version to ${{ needs.CheckTag.outputs.tag }}"
+          git push origin HEAD:main
+
+      - name: Install Dependencies
+        run: corepack enable && npm install -g corepack@latest && pnpm install --frozen-lockfile
+
+      - name: Build src code
+        run: npm run build
+
+      - run: npm publish --access public

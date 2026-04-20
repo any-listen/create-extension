@@ -1,0 +1,22 @@
+{
+  "creating_project": "项目创建中...",
+  "dependencies_installed": "依赖安装完成",
+  "directory_exists": "当前目录已存在相同的项目名称：{dir}",
+  "download_template_failed": "下载模板失败：{message}",
+  "downloading_template": "模板下载中...",
+  "goodbye_message": "项目初始化完成！再见~",
+  "installing_dependencies": "依赖安装中...",
+  "project_created": "项目创建完成",
+  "template_common": "通用模板",
+  "template_common_hint": "通用项目模板，若无特殊需求选择该模板即可",
+  "template_downloaded": "模板下载完成",
+  "template_github_name": "GitHub 用户名与项目名（若不使用 GitHub，则留空）",
+  "template_github_name_invalid": "格式无效，请使用 用户名/仓库名",
+  "template_isolate": "隔离环境模板",
+  "template_isolate_hint": "适用于希望创建子隔离运行环境的扩展项目",
+  "template_package_manager": "你计划使用那个包管理工具？",
+  "template_project_name": "项目名称",
+  "template_project_name_required": "项目名称不能为空",
+  "template_type_message": "选择要初始化的扩展项目模板",
+  "welcome_message": "欢迎使用 Any Listen 扩展模板创建工具！"
+}

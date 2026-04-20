@@ -1,0 +1,58 @@
+{
+  "name": "@any-listen/create-extension",
+  "version": "0.1.0",
+  "description": "Any Listen Extension Template Creator",
+  "keywords": [
+    "any-listen",
+    "any-listen-extension"
+  ],
+  "homepage": "https://github.com/any-listen/create-extension#readme",
+  "bugs": {
+    "url": "https://github.com/any-listen/create-extension/issues"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "lyswhut",
+    "email": "lyswhut@qq.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/any-listen/create-extension.git"
+  },
+  "bin": "dist/bin.js",
+  "files": [
+    "dist",
+    "i18n",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.2.0",
+    "picocolors": "^1.1.1",
+    "tar": "^7.5.13",
+    "undici": "^8.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@tsconfig/node24": "^24.0.4",
+    "@tsconfig/recommended": "^1.0.13",
+    "@types/node": "^25.6.0",
+    "@typescript-eslint/eslint-plugin": "^8.58.1",
+    "@typescript-eslint/parser": "^8.58.1",
+    "eslint": "^9.39.4",
+    "eslint-config-love": "^152.0.0",
+    "globals": "^17.4.0",
+    "oxfmt": "^0.44.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.8"
+  },
+  "engines": {
+    "node": ">= 22"
+  },
+  "packageManager": "pnpm@10.33.0+sha512.10568bb4a6afb58c9eb3630da90cc9516417abebd3fabbe6739f0ae795728da1491e9db5a544c76ad8eb7570f5c4bb3d6c637b2cb41bfdcdb47fa823c8649319"
+}
