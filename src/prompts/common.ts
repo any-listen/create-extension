@@ -30,7 +30,7 @@ export const common = async () => {
   await removeTemplateConfig(templateDir, packageManageName)
   await moveDir(templateDir, finalPath)
   await createEnvFile(finalPath)
-  spin.stop(t('project_created'))
+  spin.stop(t('project_created', { path: finalPath }))
   spin.start(t('installing_dependencies'))
   await installDependencies(finalPath, packageManageName)
   spin.stop(t('dependencies_installed'))

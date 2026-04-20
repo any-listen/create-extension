@@ -6,7 +6,7 @@
   "downloading_template": "Template downloading...",
   "goodbye_message": "Project initialization completed! \nGoodbye~",
   "installing_dependencies": "Dependencies are being installed...",
-  "project_created": "Project creation completed",
+  "project_created": "Project creation completed ({path})",
   "template_common": "Universal template",
   "template_common_hint": "General project template, just choose this template if you have no special needs",
   "template_downloaded": "Template download completed",
@@ -16,6 +16,7 @@
   "template_isolate_hint": "Suitable for extension projects that wish to create sub-isolated runtime environments",
   "template_package_manager": "Which package management tool do you plan to use?",
   "template_project_name": "Project name",
+  "template_project_name_invalid": "The format is invalid. The name is only allowed to contain numbers, letters, dashes, and underscores.",
   "template_project_name_required": "Project name cannot be empty",
   "template_type_message": "Select the extension project template to initialize",
   "welcome_message": "Welcome to the Any Listen extension template creation tool!"

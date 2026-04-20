@@ -6,7 +6,7 @@
   "downloading_template": "模板下载中...",
   "goodbye_message": "项目初始化完成！再见~",
   "installing_dependencies": "依赖安装中...",
-  "project_created": "项目创建完成",
+  "project_created": "项目创建完成（{path}）",
   "template_common": "通用模板",
   "template_common_hint": "通用项目模板，若无特殊需求选择该模板即可",
   "template_downloaded": "模板下载完成",
@@ -16,6 +16,7 @@
   "template_isolate_hint": "适用于希望创建子隔离运行环境的扩展项目",
   "template_package_manager": "你计划使用那个包管理工具？",
   "template_project_name": "项目名称",
+  "template_project_name_invalid": "格式无效，名字仅允许包含数字、字母及横线、下划线",
   "template_project_name_required": "项目名称不能为空",
   "template_type_message": "选择要初始化的扩展项目模板",
   "welcome_message": "欢迎使用 Any Listen 扩展模板创建工具！"

@@ -1,3 +1,4 @@
+import { exec } from 'node:child_process'
 import crypto from 'node:crypto'
 import fs from 'node:fs/promises'
 import os from 'node:os'
@@ -57,6 +58,24 @@ export const removeTemplateConfig = async (templateDir: string, packageManager: 
   }
 }
 
+const formatProjectName = (name: string) => {
+  const projectName = name
+    .split('-')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+    .join('')
+  return projectName
+}
+const getAuthorName = async () => {
+  return new Promise<string>((resolve) => {
+    exec('git config user.name', (error, stdout) => {
+      if (error) {
+        resolve('')
+        return
+      }
+      resolve(stdout.trim())
+    })
+  })
+}
 const fillNames = {
   '{githubName}': 'githubName',
   '{name}': 'name',
@@ -72,9 +91,9 @@ export const fillFile = async (
 ) => {
   const fullConfig = {
     ...config,
-    projectName: config.name,
-    homepage: '',
-    author: '',
+    projectName: formatProjectName(config.name),
+    homepage: config.githubName ? `https://github.com/${config.githubName}#readme` : '',
+    author: await getAuthorName(),
   }
   for (const fileName of fillFiles) {
     const filePath = path.join(templateDir, fileName)

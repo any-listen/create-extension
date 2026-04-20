@@ -28,7 +28,9 @@ export const getCommonCondfig = async () => {
     defaultValue: defaultName,
     initialValue: defaultName,
     validate: (value) => {
-      if (!value && !defaultName) return t('template_project_name_required')
+      const val = value || defaultName
+      if (!val) return t('template_project_name_required')
+      if (!/^[\w-]+$/.test(val)) return t('template_project_name_invalid')
       return undefined
     },
   })
@@ -37,9 +39,9 @@ export const getCommonCondfig = async () => {
   const packageManageName = await select({
     message: t('template_package_manager'),
     options: [
+      { value: 'pnpm', label: 'pnpm' },
       { value: 'npm', label: 'npm' },
       { value: 'yarn', label: 'yarn' },
-      { value: 'pnpm', label: 'pnpm' },
     ],
   })
   if (checkCancel(packageManageName)) return
