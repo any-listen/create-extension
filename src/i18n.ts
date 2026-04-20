@@ -46,6 +46,10 @@ type Locale =
 type Message = typeof enUs
 type TranslateValues = Record<string, string | number | boolean>
 
+const getI18nFile = async (locale: Locale) => {
+  return JSON.parse(await fs.readFile(path.join(import.meta.dirname, '../i18n', `${locale}.json`), 'utf-8')) as Message
+}
+
 const fillMessage = (message: string, vals: TranslateValues): string => {
   for (const [key, val] of Object.entries(vals)) {
     message = message.replaceAll(`{${key}}`, String(val))
@@ -59,7 +63,7 @@ export const i18n = {
   message: {} as unknown as Message,
   async setLanguage(locale: Locale) {
     try {
-      const messages = JSON.parse(await fs.readFile(path.join('../i18n', `${locale}.json`), 'utf-8')) as Message
+      const messages = await getI18nFile(locale)
       this.message = messages
     } catch {}
   },
@@ -78,8 +82,7 @@ export const setLanguage = async (lang: Locale) => {
 }
 
 export const initI18n = async () => {
-  const enUs = await fs.readFile(path.join(import.meta.dirname, '../../i18n', `${DEFAULT_LANG}.json`), 'utf-8')
-  i18n.fallbackMessage = JSON.parse(enUs) as Message
+  i18n.fallbackMessage = await getI18nFile(DEFAULT_LANG)
   i18n.message = i18n.fallbackMessage
 
   await i18n.setLanguage(Intl.DateTimeFormat().resolvedOptions().locale.toLowerCase() as Locale)
